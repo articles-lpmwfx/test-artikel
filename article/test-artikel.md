@@ -5,7 +5,6 @@ date: 17.02.2026
 lang: en
 description: "A test article verifying the full publish chain: Markdown, GitHub Pages, custom domain, and PDF generation."
 ---
-
 ![lpmwfx articles](../assets/badge.png)
 
 # Test Article
@@ -54,3 +53,10 @@ def publish(article: str) -> str:
 ## Conclusion
 
 If you can read this at `test-artikel.lpmwfx.com` and download the PDF from the release page, the entire chain is working.
+
+---
+
+**Also available as:**
+[HTML](https://test-artikel.lpmwfx.com) |
+[PDF](https://github.com/articles-lpmwfx/test-artikel/releases/latest) |
+[Repository](https://github.com/articles-lpmwfx/test-artikel)

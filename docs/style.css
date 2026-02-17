@@ -85,9 +85,30 @@ body {
   box-shadow: 0 1px 3px rgba(0,0,0,0.15);
 }
 
+/* Article nav — links to other formats */
+.article-nav {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  padding: 0.75rem 0;
+  margin-bottom: 1.5rem;
+  border-bottom: 1px solid var(--border);
+  font-size: 0.9rem;
+}
+
+.article-nav a {
+  color: var(--accent);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.article-nav a:hover { text-decoration: underline; }
+
 /* Header */
 header {
-  margin-bottom: 2.5rem;
+  margin-bottom: 1rem;
   padding-bottom: 1.5rem;
   border-bottom: 2px solid var(--border);
 }
