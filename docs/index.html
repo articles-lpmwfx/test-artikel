@@ -128,25 +128,7 @@ Python</li>
 <h2 id="the-pipeline">The Pipeline</h2>
 <p>The article flows through these stages:</p>
 <div class="diagram">
-<pre class="mermaid">
-graph LR
-    A[Draft<br/>Danish / English] --> B[Claude<br/>Format & Structure]
-    B --> C[Mistral Small<br/>Translate & Proofread]
-    C --> D[Pandoc]
-    D --> E[HTML<br/>GitHub Pages]
-    D --> F[PDF<br/>Tagged Release]
-    E --> G[Custom Domain<br/>article.lpmwfx.com]
-    F --> H[GitHub Release<br/>v0.1, v1.0]
-
-    style A fill:#f3f4f6,stroke:#6b7280
-    style B fill:#dbeafe,stroke:#2563eb
-    style C fill:#fef3c7,stroke:#d97706
-    style D fill:#d1fae5,stroke:#059669
-    style E fill:#ede9fe,stroke:#7c3aed
-    style F fill:#ede9fe,stroke:#7c3aed
-    style G fill:#fce7f3,stroke:#db2777
-    style H fill:#fce7f3,stroke:#db2777
-</pre>
+<pre class="mermaid" data-src="Z3JhcGggTFIKICAgIEFbRHJhZnQ8YnIvPkRhbmlzaCAvIEVuZ2xpc2hdIC0tPiBCW0NsYXVkZTxici8+Rm9ybWF0ICYgU3RydWN0dXJlXQogICAgQiAtLT4gQ1tNaXN0cmFsIFNtYWxsPGJyLz5UcmFuc2xhdGUgJiBQcm9vZnJlYWRdCiAgICBDIC0tPiBEW1BhbmRvY10KICAgIEQgLS0+IEVbSFRNTDxici8+R2l0SHViIFBhZ2VzXQogICAgRCAtLT4gRltQREY8YnIvPlRhZ2dlZCBSZWxlYXNlXQogICAgRSAtLT4gR1tDdXN0b20gRG9tYWluPGJyLz5hcnRpY2xlLmxwbXdmeC5jb21dCiAgICBGIC0tPiBIW0dpdEh1YiBSZWxlYXNlPGJyLz52MC4xLCB2MS4wXQoKICAgIHN0eWxlIEEgZmlsbDojZjNmNGY2LHN0cm9rZTojNmI3MjgwCiAgICBzdHlsZSBCIGZpbGw6I2RiZWFmZSxzdHJva2U6IzI1NjNlYgogICAgc3R5bGUgQyBmaWxsOiNmZWYzYzcsc3Ryb2tlOiNkOTc3MDYKICAgIHN0eWxlIEQgZmlsbDojZDFmYWU1LHN0cm9rZTojMDU5NjY5CiAgICBzdHlsZSBFIGZpbGw6I2VkZTlmZSxzdHJva2U6IzdjM2FlZAogICAgc3R5bGUgRiBmaWxsOiNlZGU5ZmUsc3Ryb2tlOiM3YzNhZWQKICAgIHN0eWxlIEcgZmlsbDojZmNlN2YzLHN0cm9rZTojZGIyNzc3CiAgICBzdHlsZSBIIGZpbGw6I2ZjZTdmMyxzdHJva2U6I2RiMjc3Nw=="></pre>
 </div>
 <ul>
 <li><strong>Author</strong> writes the draft (Danish or English)</li>
@@ -185,6 +167,12 @@ download the PDF from the release page, the entire chain is working.</p>
     return window.matchMedia('(prefers-color-scheme: dark)').matches;
   }
   
+  function decodeMermaidSources() {
+    document.querySelectorAll('.mermaid[data-src]').forEach(el => {
+      el.textContent = atob(el.getAttribute('data-src'));
+    });
+  }
+
   function initMermaid(dark) {
     mermaid.initialize({
       startOnLoad: false,
@@ -193,8 +181,9 @@ download the PDF from the release page, the entire chain is working.</p>
     });
     document.querySelectorAll('.mermaid[data-processed]').forEach(el => {
       el.removeAttribute('data-processed');
-      el.innerHTML = el.getAttribute('data-original') || el.textContent;
+      el.innerHTML = '';
     });
+    decodeMermaidSources();
     mermaid.run();
   }
 
@@ -208,10 +197,6 @@ download the PDF from the release page, the entire chain is working.</p>
     }
     updateToggle();
     
-    // Store original Mermaid source for re-rendering
-    document.querySelectorAll('.mermaid:not([data-original])').forEach(el => {
-      el.setAttribute('data-original', el.textContent);
-    });
     initMermaid(isDark());
   };
 
@@ -232,10 +217,6 @@ download the PDF from the release page, the entire chain is working.</p>
   window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
     if (!localStorage.getItem('theme')) {
       
-    // Store original Mermaid source for re-rendering
-    document.querySelectorAll('.mermaid:not([data-original])').forEach(el => {
-      el.setAttribute('data-original', el.textContent);
-    });
     initMermaid(isDark());
     }
   });
