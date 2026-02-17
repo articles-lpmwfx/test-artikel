@@ -5,7 +5,7 @@
   <meta name="generator" content="pandoc" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <meta name="author" content="lpmwfx, Denmark, EU" />
-  <meta name="description" content="A test article verifying the full publish chain: Markdown, GitHub Pages, custom domain, and PDF generation." />
+  <meta name="description" content="A complete, automated article publishing pipeline from Markdown to responsive HTML, styled PDF, and GitHub-hosted distribution with integrity verification." />
   <title>test-artikel</title>
   <style>
     code{white-space: pre-wrap;}
@@ -112,43 +112,114 @@
 <img src="badge.png" alt="lpmwfx articles" />
 <figcaption aria-hidden="true">lpmwfx articles</figcaption>
 </figure>
-<h1 id="test-article">Test Article</h1>
-<p>This is a test article to verify the complete publishing pipeline
-from source to distribution.</p>
-<h2 id="what-we-are-testing">What We Are Testing</h2>
+<h1 id="article-publishing-pipeline">Article Publishing Pipeline</h1>
+<p>This article documents a fully automated publishing system that turns
+a single Markdown source into a responsive website and a professionally
+styled PDF, hosted on a custom domain with integrity verification.</p>
+<h2 id="design-principles">Design Principles</h2>
+<p>The system follows one core rule: <strong>Markdown is the single
+source of truth.</strong> Everything else is generated. This means
+version control works naturally, diffs are readable, and there is zero
+risk of format drift between outputs.</p>
+<h2 id="architecture">Architecture</h2>
+<p>Every article lives in its own repository under the
+<code>articles-lpmwfx</code> GitHub organization. Each repository
+produces three outputs from one source:</p>
 <ol type="1">
-<li><strong>Markdown to GitHub repo</strong> — versioned article source,
-single source of truth</li>
-<li><strong>GitHub Pages</strong> — automatic web publishing via
-<code>docs/</code> directory</li>
-<li><strong>Custom domain</strong> —
-<code>test-artikel.lpmwfx.com</code> with DNS via Njal.la</li>
-<li><strong>PDF generation</strong> — pandoc with xelatex, distributed
-as tagged release</li>
-<li><strong>Mistral Small proofreading</strong> — automated spelling,
-grammar, and punctuation check</li>
-<li><strong>Mermaid diagrams</strong> — rendered client-side in HTML,
-pre-rendered PNG for PDF</li>
-<li><strong>drawsvg graphics</strong> — programmatic SVG generation with
-Python</li>
+<li><strong>HTML</strong> — a responsive, full-width web page served via
+GitHub Pages on a custom subdomain</li>
+<li><strong>PDF</strong> — a typeset document with Lato font, accent
+colors, and syntax highlighting, distributed as a tagged release</li>
+<li><strong>Markdown</strong> — the source file itself, readable
+directly on GitHub</li>
 </ol>
+<p>All three formats link to each other and to a SHA256 checksum file
+for integrity verification.</p>
 <h2 id="the-pipeline">The Pipeline</h2>
-<p>The article flows through these stages:</p>
+<p>Each article passes through these stages:</p>
 <div class="diagram">
 <pre class="mermaid" data-src="Z3JhcGggTFIKICAgIEFbRHJhZnQ8YnIvPkRhbmlzaCAvIEVuZ2xpc2hdIC0tPiBCW0NsYXVkZTxici8+Rm9ybWF0ICYgU3RydWN0dXJlXQogICAgQiAtLT4gQ1tNaXN0cmFsIFNtYWxsPGJyLz5UcmFuc2xhdGUgJiBQcm9vZnJlYWRdCiAgICBDIC0tPiBEW1BhbmRvY10KICAgIEQgLS0+IEVbSFRNTDxici8+R2l0SHViIFBhZ2VzXQogICAgRCAtLT4gRltQREY8YnIvPlRhZ2dlZCBSZWxlYXNlXQogICAgRSAtLT4gR1tDdXN0b20gRG9tYWluPGJyLz5hcnRpY2xlLmxwbXdmeC5jb21dCiAgICBGIC0tPiBIW0dpdEh1YiBSZWxlYXNlPGJyLz52MC4xLCB2MS4wXQoKICAgIHN0eWxlIEEgZmlsbDojZjNmNGY2LHN0cm9rZTojNmI3MjgwCiAgICBzdHlsZSBCIGZpbGw6I2RiZWFmZSxzdHJva2U6IzI1NjNlYgogICAgc3R5bGUgQyBmaWxsOiNmZWYzYzcsc3Ryb2tlOiNkOTc3MDYKICAgIHN0eWxlIEQgZmlsbDojZDFmYWU1LHN0cm9rZTojMDU5NjY5CiAgICBzdHlsZSBFIGZpbGw6I2VkZTlmZSxzdHJva2U6IzdjM2FlZAogICAgc3R5bGUgRiBmaWxsOiNlZGU5ZmUsc3Ryb2tlOiM3YzNhZWQKICAgIHN0eWxlIEcgZmlsbDojZmNlN2YzLHN0cm9rZTojZGIyNzc3CiAgICBzdHlsZSBIIGZpbGw6I2ZjZTdmMyxzdHJva2U6I2RiMjc3Nw=="></pre>
 </div>
 <ul>
-<li><strong>Author</strong> writes the draft (Danish or English)</li>
-<li><strong>Claude</strong> formats and structures the Markdown</li>
-<li><strong>Mistral Small</strong> handles translation and
-proofreading</li>
-<li><strong>Pandoc</strong> generates HTML for the web and PDF for
-distribution</li>
-<li><strong>Local preview</strong> confirms everything before
-publishing</li>
-<li><strong>Git push</strong> and <strong>GitHub release</strong> make
-it public</li>
+<li><strong>Author</strong> writes a draft in Danish or English</li>
+<li><strong>Claude</strong> restructures the content into consistent
+Markdown with proper front matter</li>
+<li><strong>Mistral Small</strong> handles translation to English and
+proofreads spelling, grammar, and punctuation</li>
+<li><strong>Pandoc</strong> generates responsive HTML (with Mermaid JS
+for diagrams) and styled PDF (with xelatex)</li>
+<li><strong>Local preview</strong> via Python HTTP server confirms the
+result before publishing</li>
+<li><strong>Git push</strong> and a <strong>GitHub release</strong> make
+everything public</li>
 </ul>
+<h2 id="technology-stack">Technology Stack</h2>
+<table>
+<colgroup>
+<col style="width: 47%" />
+<col style="width: 26%" />
+<col style="width: 26%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Component</th>
+<th>Tool</th>
+<th>Role</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Source format</td>
+<td>Markdown + YAML</td>
+<td>Single source of truth</td>
+</tr>
+<tr class="even">
+<td>PDF engine</td>
+<td>pandoc + xelatex</td>
+<td>Typeset output with Lato font</td>
+</tr>
+<tr class="odd">
+<td>HTML engine</td>
+<td>pandoc + Mermaid JS</td>
+<td>Responsive web with client-side diagrams</td>
+</tr>
+<tr class="even">
+<td>Diagrams</td>
+<td>Mermaid (.mmd) + drawsvg</td>
+<td>Flowcharts and programmatic SVG</td>
+</tr>
+<tr class="odd">
+<td>Translation</td>
+<td>Mistral Small API</td>
+<td>Danish to English, proofreading</td>
+</tr>
+<tr class="even">
+<td>Formatting</td>
+<td>Claude</td>
+<td>Structure, consistency, front matter</td>
+</tr>
+<tr class="odd">
+<td>Hosting</td>
+<td>GitHub Pages</td>
+<td>Static site per article</td>
+</tr>
+<tr class="even">
+<td>Domain</td>
+<td>Njal.la DNS</td>
+<td>CNAME per article subdomain</td>
+</tr>
+<tr class="odd">
+<td>Integrity</td>
+<td>SHA256SUMS</td>
+<td>Checksum for every output format</td>
+</tr>
+<tr class="even">
+<td>Feedback</td>
+<td>GitHub Issues</td>
+<td>Public, traceable, email-notified</td>
+</tr>
+</tbody>
+</table>
 <h2 id="character-support">Character Support</h2>
 <p>European characters render correctly across all formats:</p>
 <ul>
@@ -156,14 +227,30 @@ it public</li>
 <li>German: ä ö ü ß</li>
 <li>French: é è ê ë ç</li>
 </ul>
-<h2 id="code-example">Code Example</h2>
-<div class="sourceCode" id="cb1"><pre
-class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> publish(article: <span class="bu">str</span>) <span class="op">-&gt;</span> <span class="bu">str</span>:</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">&quot;&quot;&quot;Publish an article to the web.&quot;&quot;&quot;</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="ss">f&quot;Published: </span><span class="sc">{</span>article<span class="sc">}</span><span class="ss">&quot;</span></span></code></pre></div>
+<h2 id="repository-structure">Repository Structure</h2>
+<pre><code>&lt;article&gt;/
+├── article/
+│   └── &lt;name&gt;.md          ← source of truth
+├── assets/
+│   ├── pipeline.mmd       ← Mermaid source
+│   ├── pipeline.png       ← pre-rendered for PDF
+│   └── badge.svg         ← drawsvg output
+├── docs/
+│   ├── index.html        ← generated HTML
+│   ├── style.css        ← responsive CSS with dark mode
+│   ├── CNAME            ← custom domain
+│   └── SHA256SUMS       ← checksums
+├── README.md
+└── SHA256SUMS</code></pre>
 <h2 id="conclusion">Conclusion</h2>
-<p>If you can read this at <code>test-artikel.lpmwfx.com</code> and
-download the PDF from the release page, the entire chain is working.</p>
+<p>The entire system runs from the command line with four scripts:</p>
+<div class="sourceCode" id="cb2"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python3</span> app/mistral-proofread.py article/<span class="op">&lt;</span>name<span class="op">&gt;</span>.md</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="ex">python3</span> app/build-html.py <span class="op">&lt;</span>article-dir<span class="op">&gt;</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="ex">python3</span> app/build-pdf.py <span class="op">&lt;</span>article-dir<span class="op">&gt;</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="ex">python3</span> app/build-checksums.py <span class="op">&lt;</span>article-dir<span class="op">&gt;</span></span></code></pre></div>
+<p>No CMS, no database, no build server. Just Markdown, Git, and
+automation.</p>
 <hr />
 <p><strong>Also available as:</strong> <a
 href="https://test-artikel.lpmwfx.com">HTML</a> | <a
