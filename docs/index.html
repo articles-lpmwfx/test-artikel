@@ -138,7 +138,7 @@ for integrity verification.</p>
 <h2 id="the-pipeline">The Pipeline</h2>
 <p>Each article passes through these stages:</p>
 <div class="diagram">
-<pre class="mermaid" data-src="Z3JhcGggTFIKICAgIEFbRHJhZnQ8YnIvPkRhbmlzaCAvIEVuZ2xpc2hdIC0tPiBCW0NsYXVkZTxici8+Rm9ybWF0ICYgU3RydWN0dXJlXQogICAgQiAtLT4gQ1tNaXN0cmFsIFNtYWxsPGJyLz5UcmFuc2xhdGUgJiBQcm9vZnJlYWRdCiAgICBDIC0tPiBEW1BhbmRvY10KICAgIEQgLS0+IEVbSFRNTDxici8+R2l0SHViIFBhZ2VzXQogICAgRCAtLT4gRltQREY8YnIvPlRhZ2dlZCBSZWxlYXNlXQogICAgRSAtLT4gR1tDdXN0b20gRG9tYWluPGJyLz5hcnRpY2xlLmxwbXdmeC5jb21dCiAgICBGIC0tPiBIW0dpdEh1YiBSZWxlYXNlPGJyLz52MC4xLCB2MS4wXQoKICAgIHN0eWxlIEEgZmlsbDojZjNmNGY2LHN0cm9rZTojNmI3MjgwCiAgICBzdHlsZSBCIGZpbGw6I2RiZWFmZSxzdHJva2U6IzI1NjNlYgogICAgc3R5bGUgQyBmaWxsOiNmZWYzYzcsc3Ryb2tlOiNkOTc3MDYKICAgIHN0eWxlIEQgZmlsbDojZDFmYWU1LHN0cm9rZTojMDU5NjY5CiAgICBzdHlsZSBFIGZpbGw6I2VkZTlmZSxzdHJva2U6IzdjM2FlZAogICAgc3R5bGUgRiBmaWxsOiNlZGU5ZmUsc3Ryb2tlOiM3YzNhZWQKICAgIHN0eWxlIEcgZmlsbDojZmNlN2YzLHN0cm9rZTojZGIyNzc3CiAgICBzdHlsZSBIIGZpbGw6I2ZjZTdmMyxzdHJva2U6I2RiMjc3Nw=="></pre>
+<pre class="mermaid" data-src="Z3JhcGggTFIKICAgIEFbRHJhZnQ8YnIvPkRhbmlzaCAvIEVuZ2xpc2hdIC0tPiBCW0NsYXVkZTxici8+Rm9ybWF0ICYgU3RydWN0dXJlXQogICAgQiAtLT4gQ1tNaXN0cmFsIFNtYWxsPGJyLz5UcmFuc2xhdGUgJiBQcm9vZnJlYWRdCiAgICBDIC0tPiBMe0xhbmd1YWdlIENoZWNrPGJyLz5BSSBEZXRlY3Rpb24gU2hpZWxkfQogICAgTCAtLT58UEFTU3wgRFtQYW5kb2NdCiAgICBMIC0tPnxGTEFHfCBCCiAgICBEIC0tPiBFW0hUTUw8YnIvPkdpdEh1YiBQYWdlc10KICAgIEQgLS0+IEZbUERGPGJyLz5UYWdnZWQgUmVsZWFzZV0KICAgIEUgLS0+IEdbQ3VzdG9tIERvbWFpbjxici8+YXJ0aWNsZS5scG13ZnguY29tXQogICAgRiAtLT4gSFtHaXRIdWIgUmVsZWFzZTxici8+djAuMSwgdjEuMF0KCiAgICBzdHlsZSBBIGZpbGw6I2YzZjRmNixzdHJva2U6IzZiNzI4MAogICAgc3R5bGUgQiBmaWxsOiNkYmVhZmUsc3Ryb2tlOiMyNTYzZWIKICAgIHN0eWxlIEMgZmlsbDojZmVmM2M3LHN0cm9rZTojZDk3NzA2CiAgICBzdHlsZSBMIGZpbGw6I2ZlZjljMyxzdHJva2U6I2NhOGEwNAogICAgc3R5bGUgRCBmaWxsOiNkMWZhZTUsc3Ryb2tlOiMwNTk2NjkKICAgIHN0eWxlIEUgZmlsbDojZWRlOWZlLHN0cm9rZTojN2MzYWVkCiAgICBzdHlsZSBGIGZpbGw6I2VkZTlmZSxzdHJva2U6IzdjM2FlZAogICAgc3R5bGUgRyBmaWxsOiNmY2U3ZjMsc3Ryb2tlOiNkYjI3NzcKICAgIHN0eWxlIEggZmlsbDojZmNlN2YzLHN0cm9rZTojZGIyNzc3"></pre>
 </div>
 <ul>
 <li><strong>Author</strong> writes a draft in Danish or English</li>
@@ -146,6 +146,8 @@ for integrity verification.</p>
 Markdown with proper front matter</li>
 <li><strong>Mistral Small</strong> handles translation to English and
 proofreads spelling, grammar, and punctuation</li>
+<li><strong>Language Check</strong> analyzes the text for AI-like
+patterns — if flagged, the text loops back for revision</li>
 <li><strong>Pandoc</strong> generates responsive HTML (with Mermaid JS
 for diagrams) and styled PDF (with xelatex)</li>
 <li><strong>Local preview</strong> via Python HTTP server confirms the
@@ -209,11 +211,16 @@ everything public</li>
 <td>CNAME per article subdomain</td>
 </tr>
 <tr class="odd">
+<td>Language check</td>
+<td>language-check.py</td>
+<td>AI detection shield (burstiness, vocabulary, AI phrases)</td>
+</tr>
+<tr class="even">
 <td>Integrity</td>
 <td>SHA256SUMS</td>
 <td>Checksum for every output format</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>Feedback</td>
 <td>GitHub Issues</td>
 <td>Public, traceable, email-notified</td>
@@ -246,9 +253,10 @@ everything public</li>
 <p>The entire system runs from the command line with four scripts:</p>
 <div class="sourceCode" id="cb2"><pre
 class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python3</span> app/mistral-proofread.py article/<span class="op">&lt;</span>name<span class="op">&gt;</span>.md</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="ex">python3</span> app/build-html.py <span class="op">&lt;</span>article-dir<span class="op">&gt;</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="ex">python3</span> app/build-pdf.py <span class="op">&lt;</span>article-dir<span class="op">&gt;</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="ex">python3</span> app/build-checksums.py <span class="op">&lt;</span>article-dir<span class="op">&gt;</span></span></code></pre></div>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="ex">python3</span> app/language-check.py article/<span class="op">&lt;</span>name<span class="op">&gt;</span>.md</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="ex">python3</span> app/build-html.py <span class="op">&lt;</span>article-dir<span class="op">&gt;</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="ex">python3</span> app/build-pdf.py <span class="op">&lt;</span>article-dir<span class="op">&gt;</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="ex">python3</span> app/build-checksums.py <span class="op">&lt;</span>article-dir<span class="op">&gt;</span></span></code></pre></div>
 <p>No CMS, no database, no build server. Just Markdown, Git, and
 automation.</p>
 <hr />

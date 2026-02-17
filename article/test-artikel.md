@@ -34,6 +34,7 @@ Each article passes through these stages:
 - **Author** writes a draft in Danish or English
 - **Claude** restructures the content into consistent Markdown with proper front matter
 - **Mistral Small** handles translation to English and proofreads spelling, grammar, and punctuation
+- **Language Check** analyzes the text for AI-like patterns — if flagged, the text loops back for revision
 - **Pandoc** generates responsive HTML (with Mermaid JS for diagrams) and styled PDF (with xelatex)
 - **Local preview** via Python HTTP server confirms the result before publishing
 - **Git push** and a **GitHub release** make everything public
@@ -50,6 +51,7 @@ Each article passes through these stages:
 | Formatting | Claude | Structure, consistency, front matter |
 | Hosting | GitHub Pages | Static site per article |
 | Domain | Njal.la DNS | CNAME per article subdomain |
+| Language check | language-check.py | AI detection shield (burstiness, vocabulary, AI phrases) |
 | Integrity | SHA256SUMS | Checksum for every output format |
 | Feedback | GitHub Issues | Public, traceable, email-notified |
 
@@ -86,6 +88,7 @@ The entire system runs from the command line with four scripts:
 
 ```bash
 python3 app/mistral-proofread.py article/<name>.md
+python3 app/language-check.py article/<name>.md
 python3 app/build-html.py <article-dir>
 python3 app/build-pdf.py <article-dir>
 python3 app/build-checksums.py <article-dir>
