@@ -91,6 +91,11 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+<div class="theme-toggle" aria-label="Theme switcher">
+  <button onclick="setTheme('light')" title="Light">&#9788;</button>
+  <button onclick="setTheme('dark')" title="Dark">&#9790;</button>
+  <button onclick="setTheme('system')" title="System">&#9881;</button>
+</div>
 <header id="title-block-header">
 <h1 class="title">test-artikel</h1>
 <p class="author">lpmwfx, Denmark, EU</p>
@@ -172,12 +177,70 @@ class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a hr
 download the PDF from the release page, the entire chain is working.</p>
 <script type="module">
   import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
-  const dark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-  mermaid.initialize({
-    startOnLoad: true,
-    theme: dark ? 'dark' : 'default',
-    flowchart: { useMaxWidth: true, htmlLabels: true }
+
+  function isDark() {
+    const theme = document.documentElement.getAttribute('data-theme');
+    if (theme === 'dark') return true;
+    if (theme === 'light') return false;
+    return window.matchMedia('(prefers-color-scheme: dark)').matches;
+  }
+  
+  function initMermaid(dark) {
+    mermaid.initialize({
+      startOnLoad: false,
+      theme: dark ? 'dark' : 'default',
+      flowchart: { useMaxWidth: true, htmlLabels: true }
+    });
+    document.querySelectorAll('.mermaid[data-processed]').forEach(el => {
+      el.removeAttribute('data-processed');
+      el.innerHTML = el.getAttribute('data-original') || el.textContent;
+    });
+    mermaid.run();
+  }
+
+  window.setTheme = function(theme) {
+    if (theme === 'system') {
+      document.documentElement.removeAttribute('data-theme');
+      localStorage.removeItem('theme');
+    } else {
+      document.documentElement.setAttribute('data-theme', theme);
+      localStorage.setItem('theme', theme);
+    }
+    updateToggle();
+    
+    // Store original Mermaid source for re-rendering
+    document.querySelectorAll('.mermaid:not([data-original])').forEach(el => {
+      el.setAttribute('data-original', el.textContent);
+    });
+    initMermaid(isDark());
+  };
+
+  function updateToggle() {
+    const current = localStorage.getItem('theme') || 'system';
+    document.querySelectorAll('.theme-toggle button').forEach((btn, i) => {
+      const themes = ['light', 'dark', 'system'];
+      btn.classList.toggle('active', themes[i] === current);
+    });
+  }
+
+  // Apply saved theme on load
+  const saved = localStorage.getItem('theme');
+  if (saved) document.documentElement.setAttribute('data-theme', saved);
+  updateToggle();
+
+  // Listen for system theme changes
+  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
+    if (!localStorage.getItem('theme')) {
+      
+    // Store original Mermaid source for re-rendering
+    document.querySelectorAll('.mermaid:not([data-original])').forEach(el => {
+      el.setAttribute('data-original', el.textContent);
+    });
+    initMermaid(isDark());
+    }
   });
+
+  initMermaid(isDark());
 </script>
 </body>
 </html>
