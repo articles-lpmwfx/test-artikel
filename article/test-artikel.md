@@ -5,6 +5,8 @@ date: 17.02.2026
 lang: en
 description: "A test article verifying the full publish chain: Markdown, GitHub Pages, custom domain, and PDF generation."
 ---
+![lpmwfx articles](../assets/badge.png)
+
 # Test Article
 
 This is a test article to verify the complete publishing pipeline from source to distribution.
@@ -16,10 +18,14 @@ This is a test article to verify the complete publishing pipeline from source to
 3. **Custom domain** — `test-artikel.lpmwfx.com` with DNS via Njal.la
 4. **PDF generation** — pandoc with xelatex, distributed as tagged release
 5. **Mistral Small proofreading** — automated spelling, grammar, and punctuation check
+6. **Mermaid diagrams** — rendered to SVG via mmdc
+7. **drawsvg graphics** — programmatic SVG generation with Python
 
 ## The Pipeline
 
 The article flows through these stages:
+
+![Publishing pipeline](../assets/pipeline.png)
 
 - **Author** writes the draft (Danish or English)
 - **Claude** formats and structures the Markdown

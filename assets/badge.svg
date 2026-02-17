@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+     width="320" height="60" viewBox="0 0 320 60">
+<defs>
+</defs>
+<rect x="0" y="0" width="320" height="60" rx="8" ry="8" fill="#1f2937" />
+<text x="20" y="37" font-size="22" fill="#60a5fa" font-family="monospace" font-weight="bold">lpmwfx</text>
+<path d="M120,12 L120,48" stroke="#374151" stroke-width="2" />
+<text x="136" y="35" font-size="18" fill="#9ca3af" font-family="monospace">articles</text>
+<circle cx="270" cy="30" r="14" fill="#1e3a8a" />
+<text x="270.0" y="22.0" font-size="6" fill="#fbbf24" text-anchor="middle" font-family="sans-serif">★</text>
+<text x="275.0" y="23.339745962155614" font-size="6" fill="#fbbf24" text-anchor="middle" font-family="sans-serif">★</text>
+<text x="278.66025403784437" y="27.0" font-size="6" fill="#fbbf24" text-anchor="middle" font-family="sans-serif">★</text>
+<text x="280.0" y="32.0" font-size="6" fill="#fbbf24" text-anchor="middle" font-family="sans-serif">★</text>
+<text x="278.66025403784437" y="37.0" font-size="6" fill="#fbbf24" text-anchor="middle" font-family="sans-serif">★</text>
+<text x="275.0" y="40.66025403784438" font-size="6" fill="#fbbf24" text-anchor="middle" font-family="sans-serif">★</text>
+<text x="270.0" y="42.0" font-size="6" fill="#fbbf24" text-anchor="middle" font-family="sans-serif">★</text>
+<text x="265.0" y="40.66025403784439" font-size="6" fill="#fbbf24" text-anchor="middle" font-family="sans-serif">★</text>
+<text x="261.33974596215563" y="37.0" font-size="6" fill="#fbbf24" text-anchor="middle" font-family="sans-serif">★</text>
+<text x="260.0" y="32.0" font-size="6" fill="#fbbf24" text-anchor="middle" font-family="sans-serif">★</text>
+<text x="261.33974596215563" y="27.0" font-size="6" fill="#fbbf24" text-anchor="middle" font-family="sans-serif">★</text>
+<text x="265.0" y="23.339745962155618" font-size="6" fill="#fbbf24" text-anchor="middle" font-family="sans-serif">★</text>
+</svg>
