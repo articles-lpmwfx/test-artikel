@@ -1,13 +1,12 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="da" xml:lang="da">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="generator" content="pandoc" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-  <meta name="author" content="lpmwfx" />
-  <meta name="dcterms.date" content="2026-02-17" />
-  <meta name="description" content="En test-artikel for at verificere hele publish-kæden: Markdown → GitHub Pages → PDF" />
-  <title>Test Artikel</title>
+  <meta name="author" content="lpmwfx, Denmark, EU" />
+  <meta name="description" content="A test article verifying the full publish chain: Markdown, GitHub Pages, custom domain, and PDF generation." />
+  <title>Test Article</title>
   <style>
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
@@ -93,31 +92,54 @@
 </head>
 <body>
 <header id="title-block-header">
-<h1 class="title">Test Artikel</h1>
-<p class="author">lpmwfx</p>
-<p class="date">2026-02-17</p>
+<h1 class="title">Test Article</h1>
+<p class="author">lpmwfx, Denmark, EU</p>
+<p class="date">17.02.2026</p>
 </header>
-<h1 id="test-artikel">Test Artikel</h1>
-<p>Dette er en test-artikel til at verificere den fulde
-publish-pipeline.</p>
-<h2 id="hvad-tester-vi">Hvad tester vi?</h2>
+<h1 id="test-article">Test Article</h1>
+<p>This is a test article to verify the complete publishing pipeline
+from source to distribution.</p>
+<h2 id="what-we-are-testing">What We Are Testing</h2>
 <ol type="1">
-<li><strong>Markdown til GitHub repo</strong> — versioneret
-artikelkilde</li>
-<li><strong>GitHub Pages</strong> — automatisk web-publicering</li>
-<li><strong>Custom domæne</strong> —
-<code>test-artikel.lpmwfx.com</code> via Njal.la DNS</li>
-<li><strong>PDF-generering</strong> — pandoc med xelatex</li>
+<li><strong>Markdown to GitHub repo</strong> — versioned article source,
+single source of truth</li>
+<li><strong>GitHub Pages</strong> — automatic web publishing via
+<code>docs/</code> directory</li>
+<li><strong>Custom domain</strong> —
+<code>test-artikel.lpmwfx.com</code> with DNS via Njal.la</li>
+<li><strong>PDF generation</strong> — pandoc with xelatex, distributed
+as tagged release</li>
+<li><strong>Mistral Small proofreading</strong> — automated spelling,
+grammar, and punctuation check</li>
 </ol>
-<h2 id="danske-tegn">Danske tegn</h2>
-<p>Æble, ørred, ålborg — æøå ÆØÅ virker korrekt.</p>
-<h2 id="kodeeksempel">Kodeeksempel</h2>
+<h2 id="the-pipeline">The Pipeline</h2>
+<p>The article flows through these stages:</p>
+<ul>
+<li><strong>Author</strong> writes the draft (Danish or English)</li>
+<li><strong>Claude</strong> formats and structures the Markdown</li>
+<li><strong>Mistral Small</strong> handles translation and
+proofreading</li>
+<li><strong>Pandoc</strong> generates HTML for the web and PDF for
+distribution</li>
+<li><strong>Local preview</strong> confirms everything before
+publishing</li>
+<li><strong>Git push</strong> and <strong>GitHub release</strong> make
+it public</li>
+</ul>
+<h2 id="character-support">Character Support</h2>
+<p>European characters render correctly across all formats:</p>
+<ul>
+<li>Danish: æ ø å — Æ Ø Å</li>
+<li>German: ä ö ü ß</li>
+<li>French: é è ê ë ç</li>
+</ul>
+<h2 id="code-example">Code Example</h2>
 <div class="sourceCode" id="cb1"><pre
 class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> publish(article: <span class="bu">str</span>) <span class="op">-&gt;</span> <span class="bu">str</span>:</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">&quot;&quot;&quot;Publish an article to the web.&quot;&quot;&quot;</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="ss">f&quot;Published: </span><span class="sc">{</span>article<span class="sc">}</span><span class="ss">&quot;</span></span></code></pre></div>
-<h2 id="konklusion">Konklusion</h2>
-<p>Hvis du kan læse dette på <code>test-artikel.lpmwfx.com</code>,
-virker hele kæden.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>If you can read this at <code>test-artikel.lpmwfx.com</code> and
+download the PDF from the release page, the entire chain is working.</p>
 </body>
 </html>

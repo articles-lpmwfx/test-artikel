@@ -1,27 +1,42 @@
 ---
-title: "Test Artikel"
-author: "lpmwfx"
-date: 2026-02-17
-lang: da
-description: "En test-artikel for at verificere hele publish-kæden: Markdown → GitHub Pages → PDF"
+title: "Test Article"
+author: "lpmwfx, Denmark, EU"
+date: 17.02.2026
+lang: en
+description: "A test article verifying the full publish chain: Markdown, GitHub Pages, custom domain, and PDF generation."
 ---
+# Test Article
 
-# Test Artikel
+This is a test article to verify the complete publishing pipeline from source to distribution.
 
-Dette er en test-artikel til at verificere den fulde publish-pipeline.
+## What We Are Testing
 
-## Hvad tester vi?
+1. **Markdown to GitHub repo** — versioned article source, single source of truth
+2. **GitHub Pages** — automatic web publishing via `docs/` directory
+3. **Custom domain** — `test-artikel.lpmwfx.com` with DNS via Njal.la
+4. **PDF generation** — pandoc with xelatex, distributed as tagged release
+5. **Mistral Small proofreading** — automated spelling, grammar, and punctuation check
 
-1. **Markdown til GitHub repo** — versioneret artikelkilde
-2. **GitHub Pages** — automatisk web-publicering
-3. **Custom domæne** — `test-artikel.lpmwfx.com` via Njal.la DNS
-4. **PDF-generering** — pandoc med xelatex
+## The Pipeline
 
-## Danske tegn
+The article flows through these stages:
 
-Æble, ørred, ålborg — æøå ÆØÅ virker korrekt.
+- **Author** writes the draft (Danish or English)
+- **Claude** formats and structures the Markdown
+- **Mistral Small** handles translation and proofreading
+- **Pandoc** generates HTML for the web and PDF for distribution
+- **Local preview** confirms everything before publishing
+- **Git push** and **GitHub release** make it public
 
-## Kodeeksempel
+## Character Support
+
+European characters render correctly across all formats:
+
+- Danish: æ ø å — Æ Ø Å
+- German: ä ö ü ß
+- French: é è ê ë ç
+
+## Code Example
 
 ```python
 def publish(article: str) -> str:
@@ -29,6 +44,6 @@ def publish(article: str) -> str:
     return f"Published: {article}"
 ```
 
-## Konklusion
+## Conclusion
 
-Hvis du kan læse dette på `test-artikel.lpmwfx.com`, virker hele kæden.
+If you can read this at `test-artikel.lpmwfx.com` and download the PDF from the release page, the entire chain is working.
