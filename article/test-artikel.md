@@ -59,4 +59,5 @@ If you can read this at `test-artikel.lpmwfx.com` and download the PDF from the 
 **Also available as:**
 [HTML](https://test-artikel.lpmwfx.com) |
 [PDF](https://github.com/articles-lpmwfx/test-artikel/releases/latest) |
-[Repository](https://github.com/articles-lpmwfx/test-artikel)
+[Repository](https://github.com/articles-lpmwfx/test-artikel) |
+[SHA256](https://github.com/articles-lpmwfx/test-artikel/blob/main/SHA256SUMS)
