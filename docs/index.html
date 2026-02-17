@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <meta name="author" content="lpmwfx, Denmark, EU" />
   <meta name="description" content="A test article verifying the full publish chain: Markdown, GitHub Pages, custom domain, and PDF generation." />
-  <title>Test Article</title>
+  <title>test-artikel</title>
   <style>
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
@@ -92,7 +92,7 @@
 </head>
 <body>
 <header id="title-block-header">
-<h1 class="title">Test Article</h1>
+<h1 class="title">test-artikel</h1>
 <p class="author">lpmwfx, Denmark, EU</p>
 <p class="date">17.02.2026</p>
 </header>
@@ -115,16 +115,34 @@ single source of truth</li>
 as tagged release</li>
 <li><strong>Mistral Small proofreading</strong> — automated spelling,
 grammar, and punctuation check</li>
-<li><strong>Mermaid diagrams</strong> — rendered to SVG via mmdc</li>
+<li><strong>Mermaid diagrams</strong> — rendered client-side in HTML,
+pre-rendered PNG for PDF</li>
 <li><strong>drawsvg graphics</strong> — programmatic SVG generation with
 Python</li>
 </ol>
 <h2 id="the-pipeline">The Pipeline</h2>
 <p>The article flows through these stages:</p>
-<figure>
-<img src="pipeline.png" alt="Publishing pipeline" />
-<figcaption aria-hidden="true">Publishing pipeline</figcaption>
-</figure>
+<div class="diagram">
+<pre class="mermaid">
+graph LR
+    A[Draft<br/>Danish / English] --> B[Claude<br/>Format & Structure]
+    B --> C[Mistral Small<br/>Translate & Proofread]
+    C --> D[Pandoc]
+    D --> E[HTML<br/>GitHub Pages]
+    D --> F[PDF<br/>Tagged Release]
+    E --> G[Custom Domain<br/>article.lpmwfx.com]
+    F --> H[GitHub Release<br/>v0.1, v1.0]
+
+    style A fill:#f3f4f6,stroke:#6b7280
+    style B fill:#dbeafe,stroke:#2563eb
+    style C fill:#fef3c7,stroke:#d97706
+    style D fill:#d1fae5,stroke:#059669
+    style E fill:#ede9fe,stroke:#7c3aed
+    style F fill:#ede9fe,stroke:#7c3aed
+    style G fill:#fce7f3,stroke:#db2777
+    style H fill:#fce7f3,stroke:#db2777
+</pre>
+</div>
 <ul>
 <li><strong>Author</strong> writes the draft (Danish or English)</li>
 <li><strong>Claude</strong> formats and structures the Markdown</li>
@@ -152,5 +170,14 @@ class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a hr
 <h2 id="conclusion">Conclusion</h2>
 <p>If you can read this at <code>test-artikel.lpmwfx.com</code> and
 download the PDF from the release page, the entire chain is working.</p>
+<script type="module">
+  import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+  const dark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  mermaid.initialize({
+    startOnLoad: true,
+    theme: dark ? 'dark' : 'default',
+    flowchart: { useMaxWidth: true, htmlLabels: true }
+  });
+</script>
 </body>
 </html>
