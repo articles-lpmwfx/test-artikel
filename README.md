@@ -1,29 +1,31 @@
 # Test Artikel
 
-En test-artikel for at verificere hele publish-kæden.
+A test article for verifying the full publish pipeline.
 
-| Format | Rolle | Link |
-|--------|-------|------|
-| MD | Master (source of truth) | [article/test-artikel.md](article/test-artikel.md) |
-| HTML | Public portal | [test-artikel.lpmwfx.com](https://test-artikel.lpmwfx.com) |
-| PDF | Autoritativ version | [Releases](../../releases) |
+## Read Online
 
-## Build
+- **[test-artikel.lpmwfx.com](https://test-artikel.lpmwfx.com)** (GitHub Pages)
+- **[test-artikel.lpmwfx.eu](https://test-artikel.lpmwfx.eu)** (Codeberg Pages)
 
-```bash
-# Generate PDF
-pandoc article/test-artikel.md -o article/test-artikel.pdf \
-  --pdf-engine=xelatex -V lang=da -V geometry:margin=2.5cm
+## Formats
 
-# Preview locally
-open article/test-artikel.pdf
-```
+- **HTML** — responsive web with dark/light theme
+- **PDF** — styled download via [GitHub Releases](https://github.com/articles-lpmwfx/test-artikel/releases)
+- **Markdown** — source in `article/`
 
-## Structure
+## Repositories
 
-```
-article/
-  test-artikel.md    ← MASTER (source of truth)
-assets/              ← images, diagrams
-docs/                ← GitHub Pages (generated)
-```
+- **GitHub**: [articles-lpmwfx/test-artikel](https://github.com/articles-lpmwfx/test-artikel)
+- **Codeberg**: [Articles-lpmwfx/test-artikel](https://codeberg.org/Articles-lpmwfx/test-artikel)
+
+## Integrity
+
+SHA256 checksums for all formats in [SHA256SUMS](SHA256SUMS).
+
+## Feedback
+
+Open an [issue on Codeberg](https://codeberg.org/Articles-lpmwfx/test-artikel/issues).
+
+## Author
+
+lpmwfx, Denmark, EU

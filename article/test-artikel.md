@@ -99,8 +99,10 @@ No CMS, no database, no build server. Just Markdown, Git, and automation.
 ---
 
 **Also available as:**
-[HTML](https://test-artikel.lpmwfx.com) |
+[HTML (.com)](https://test-artikel.lpmwfx.com) |
+[HTML (.eu)](https://test-artikel.lpmwfx.eu) |
 [PDF](https://github.com/articles-lpmwfx/test-artikel/releases/latest) |
-[Repository](https://github.com/articles-lpmwfx/test-artikel) |
+[GitHub](https://github.com/articles-lpmwfx/test-artikel) |
+[Codeberg](https://codeberg.org/Articles-lpmwfx/test-artikel) |
 [SHA256](https://github.com/articles-lpmwfx/test-artikel/blob/main/SHA256SUMS) |
-[Feedback](https://github.com/articles-lpmwfx/test-artikel/issues)
+[Feedback](https://codeberg.org/Articles-lpmwfx/test-artikel/issues)
